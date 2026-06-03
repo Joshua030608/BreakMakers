@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checklists | Break Makers</title>
+    <meta
+      name="description"
+      content="Explore Break Makers repack tiers and view checklists for Silver, Gold, Platinum, and Case Hit products."
+    />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+
+    <!-- Page-specific styles (kept here so you don't have to edit style.css) -->
+    <style>
+      .page {
+        padding: 56px 0 64px;
+      }
+
+      .page-head {
+        margin-bottom: 18px;
+      }
+
+      .page-title {
+        margin: 0 0 10px;
+        font-size: clamp(2rem, 3.2vw, 2.6rem);
+        letter-spacing: -0.6px;
+        line-height: 1.1;
+      }
+
+      .page-subtitle {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+        max-width: 78ch;
+      }
+
+      .tier-grid {
+        margin-top: 22px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .tier-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        padding: 16px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+        transition: transform 160ms ease, background 160ms ease, border 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .tier-card:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.32);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .tier-left {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .tier-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        padding: 7px 11px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--muted);
+        font-weight: 800;
+        font-size: 0.85rem;
+        letter-spacing: 0.2px;
+      }
+
+      .tier-name {
+        margin: 0;
+        font-size: 1.4rem;
+        letter-spacing: -0.3px;
+      }
+
+      .tier-desc {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .tier-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 4px;
+      }
+
+      .pill {
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--muted);
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      .tier-right {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+        justify-content: center;
+      }
+
+      .tier-img {
+        width: 100%;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
+      .tier-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 11px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(77, 163, 255, 0.22);
+        background: rgba(77, 163, 255, 0.10);
+        color: var(--text);
+        font-weight: 800;
+      }
+
+      .tier-cta span {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      @media (max-width: 940px) {
+        .tier-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .tier-card {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Top Navigation -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Break Makers Home">
+          <span class="brand-mark" aria-hidden="true">BM</span>
+          <span class="brand-text">Break Makers</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+
+        <nav class="nav" id="primary-nav" aria-label="Primary">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="checklists.html">Checklists</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="container">
+        <div class="page-head">
+          <h1 class="page-title">Checklists</h1>
+          <p class="page-subtitle">
+            Break Makers products come in four tiers. From worst to best:
+            <strong>Silver</strong>, <strong>Gold</strong>, <strong>Platinum</strong>,
+            and <strong>Case Hit</strong>. Case Hit is its own category—more of a special
+            chase product than a traditional “rank.”
+          </p>
+        </div>
+
+        <div class="tier-grid">
+          <!-- Silver -->
+          <a class="tier-card" href="silver-checklist.html" aria-label="View Silver checklist">
+            <div class="tier-left">
+              <div class="tier-tag">Tier 1 · Silver</div>
+              <h2 class="tier-name">Silver</h2>
+              <p class="tier-desc">
+                The entry tier built for volume breaks and consistent fun. A great way
+                to keep streams moving while still giving buyers a real chase.
+              </p>
+              <div class="tier-meta" aria-label="Silver highlights">
+                <div class="pill">Best for: high volume</div>
+                <div class="pill">Simple & streamable</div>
+              </div>
+            </div>
+
+            <div class="tier-right">
+              <img class="tier-img" src="placeholder.png" alt="Silver box placeholder image" />
+              <div class="tier-cta">
+                View Silver Checklist <span>→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Gold -->
+          <a class="tier-card" href="gold-checklist.html" aria-label="View Gold checklist">
+            <div class="tier-left">
+              <div class="tier-tag">Tier 2 · Gold</div>
+              <h2 class="tier-name">Gold</h2>
+              <p class="tier-desc">
+                A stronger mix designed for breakers who want more upside while keeping
+                the format easy to explain and clean on camera.
+              </p>
+              <div class="tier-meta" aria-label="Gold highlights">
+                <div class="pill">Best for: balanced breaks</div>
+                <div class="pill">More upside</div>
+              </div>
+            </div>
+
+            <div class="tier-right">
+              <img class="tier-img" src="placeholder.png" alt="Gold box placeholder image" />
+              <div class="tier-cta">
+                View Gold Checklist <span>→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Platinum -->
+          <a class="tier-card" href="platinum-checklist.html" aria-label="View Platinum checklist">
+            <div class="tier-left">
+              <div class="tier-tag">Tier 3 · Platinum</div>
+              <h2 class="tier-name">Platinum</h2>
+              <p class="tier-desc">
+                Premium tier made for bigger moments—higher-end potential, a more elevated
+                experience, and a product that feels special on stream.
+              </p>
+              <div class="tier-meta" aria-label="Platinum highlights">
+                <div class="pill">Best for: premium breaks</div>
+                <div class="pill">Higher ceiling</div>
+              </div>
+            </div>
+
+            <div class="tier-right">
+              <img class="tier-img" src="placeholder.png" alt="Platinum box placeholder image" />
+              <div class="tier-cta">
+                View Platinum Checklist <span>→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Case Hit -->
+          <a class="tier-card" href="case-hit-checklist.html" aria-label="View Case Hit checklist">
+            <div class="tier-left">
+              <div class="tier-tag">Special · Case Hit</div>
+              <h2 class="tier-name">Case Hit</h2>
+              <p class="tier-desc">
+                Not part of the normal tier ladder—this is a separate chase product built
+                for headline moments. Ideal for big shows, special events, or high-energy
+                breaks.
+              </p>
+              <div class="tier-meta" aria-label="Case Hit highlights">
+                <div class="pill">Best for: special events</div>
+                <div class="pill">Chase format</div>
+              </div>
+            </div>
+
+            <div class="tier-right">
+              <img class="tier-img" src="placeholder.png" alt="Case Hit box placeholder image" />
+              <div class="tier-cta">
+                View Case Hit Checklist <span>→</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Bar Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-item">
+          <span class="footer-label">Email</span>
+          <a class="footer-link" href="mailto:support@breakmakers.com">support@breakmakers.com</a>
+        </div>
+
+        <div class="footer-item">
+          <span class="footer-label">Hours</span>
+          <span class="footer-text">Mon–Fri · 9:00 AM–5:00 PM (ET)</span>
+        </div>
+
+        <div class="footer-item">
+          <span class="footer-label">Location</span>
+          <span class="footer-text">[REMOVED]</span>
+        </div>
+
+        <div class="footer-item footer-right">
+          <span class="footer-text">© <span id="year"></span> Break Makers</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

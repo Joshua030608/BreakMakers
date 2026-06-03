@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Break Makers</title>
+    <meta
+      name="description"
+      content="Contact Break Makers support. Send a message with your name, email, and question."
+    />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+
+    <!-- Page-specific styles (kept here so you don't have to edit style.css) -->
+    <style>
+      .page {
+        padding: 56px 0 64px;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 14px;
+        align-items: start;
+        margin-top: 18px;
+      }
+
+      .panel {
+        padding: 18px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+      }
+
+      .panel h2 {
+        margin: 0 0 10px;
+        letter-spacing: -0.25px;
+      }
+
+      .panel p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      form {
+        display: grid;
+        gap: 12px;
+      }
+
+      .field {
+        display: grid;
+        gap: 7px;
+      }
+
+      label {
+        font-weight: 800;
+        color: var(--muted-2);
+        text-transform: uppercase;
+        letter-spacing: 0.25px;
+        font-size: 0.78rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        font: inherit;
+        outline: none;
+        transition: border 160ms ease, background 160ms ease;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: rgba(77, 163, 255, 0.35);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 4px;
+      }
+
+      .tiny {
+        margin: 0;
+        color: var(--muted-2);
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+
+      .info-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .info-item {
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .info-item .k {
+        display: block;
+        color: var(--muted-2);
+        font-weight: 800;
+        font-size: 0.8rem;
+        letter-spacing: 0.2px;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+
+      .info-item .v {
+        color: var(--text);
+        font-weight: 750;
+        line-height: 1.4;
+      }
+
+      @media (max-width: 940px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Top Navigation -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Break Makers Home">
+          <span class="brand-mark" aria-hidden="true">BM</span>
+          <span class="brand-text">Break Makers</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+
+        <nav class="nav" id="primary-nav" aria-label="Primary">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="checklists.html">Checklists</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="container">
+        <div class="page-head">
+          <h1 class="hero-title" style="margin: 0 0 10px;">Contact</h1>
+          <p class="hero-subtitle" style="margin: 0;">
+            Send us a message and we’ll get back to you as soon as possible.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Form -->
+          <section class="panel" aria-label="Contact form">
+            <h2>Message Support</h2>
+            <p>
+              Fill out the form below with your name, email, and question. We’ll respond by email.
+            </p>
+
+            <!-- Netlify Forms:
+                 - Keep name="contact" and netlify attributes
+                 - Add a hidden "form-name" input
+                 - Optional: add a success page later (action="/thanks.html")
+            -->
+            <form name="contact" method="POST" netlify>
+              <input type="hidden" name="form-name" value="contact" />
+
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="message">Question</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="What can we help you with?"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Send Message</button>
+                <a class="btn btn-ghost" href="checklists.html">View Checklists</a>
+              </div>
+
+              <p class="tiny">
+                Prefer email? You can reach us at
+                <a class="footer-link" href="mailto:support@breakmakers.com">support@breakmakers.com</a>.
+              </p>
+            </form>
+          </section>
+
+          <!-- Right: Contact Info -->
+          <aside class="panel" aria-label="Contact information">
+            <h2>Contact Info</h2>
+            <p>
+              Here are the fastest ways to reach us and where we’re based.
+            </p>
+
+            <div class="info-list">
+              <div class="info-item">
+                <span class="k">Email</span>
+                <span class="v">
+                  <a class="footer-link" href="mailto:support@breakmakers.com">support@breakmakers.com</a>
+                </span>
+              </div>
+
+              <div class="info-item">
+                <span class="k">Hours</span>
+                <span class="v">Mon–Fri · 9:00 AM–5:00 PM (ET)</span>
+              </div>
+
+              <div class="info-item">
+                <span class="k">Location</span>
+                <span class="v">[REMOVED]</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 14px;">
+              <img
+                src="placeholder.png"
+                alt="Placeholder image"
+                style="
+                  width: 100%;
+                  border-radius: var(--radius);
+                  border: 1px solid var(--border);
+                  background: rgba(255,255,255,0.04);
+                  aspect-ratio: 16/10;
+                  object-fit: cover;
+                "
+              />
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Bar Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-item">
+          <span class="footer-label">Email</span>
+          <a class="footer-link" href="mailto:support@breakmakers.com">support@breakmakers.com</a>
+        </div>
+
+        <div class="footer-item">
+          <span class="footer-label">Hours</span>
+          <span class="footer-text">Mon–Fri · 9:00 AM–5:00 PM (ET)</span>
+        </div>
+
+        <div class="footer-item">
+          <span class="footer-label">Location</span>
+          <span class="footer-text">[REMOVED]</span>
+        </div>
+
+        <div class="footer-item footer-right">
+          <span class="footer-text">© <span id="year"></span> Break Makers</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

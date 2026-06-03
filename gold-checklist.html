@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gold Checklist | Break Makers</title>
+    <meta name="description" content="Gold checklist for Break Makers repacks." />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+
+    <style>
+      .checklist-note { margin: 0 0 10px; color: var(--muted); line-height: 1.6; max-width: 60ch; }
+      .checklist { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-direction: column; gap: 10px; }
+      .check-item { padding: 12px 14px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text); font-weight: 700; line-height: 1.45; }
+      .check-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Break Makers Home">
+          <span class="brand-mark" aria-hidden="true">BM</span>
+          <span class="brand-text">Break Makers</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+          <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+        </button>
+
+        <nav class="nav" id="primary-nav" aria-label="Primary">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="checklists.html">Checklists</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <p class="eyebrow">Tier 2 · Gold</p>
+            <h1 class="hero-title">Gold Checklist</h1>
+
+            <p class="checklist-note">
+              Example checklist items (placeholder for now). We’ll replace this with the full,
+              finalized checklist later.
+            </p>
+
+            <ul class="checklist">
+              <li class="check-item">Prizm - Jalen Hurts - PSA 10 - 2026</li>
+              <li class="check-item">Optic - Tom Brady - PSA 9 - 2025</li>
+              <li class="check-item">National Treasures - Shedeur Sanders - PSA 8 - 2024</li>
+            </ul>
+
+            <div class="check-actions">
+              <a class="btn btn-ghost" href="checklists.html">← Back to Checklists</a>
+              <a class="btn btn-primary" href="contact.html">Questions? Contact</a>
+            </div>
+          </div>
+
+          <div class="hero-media" aria-label="Gold product image">
+            <div class="media-card">
+              <img
+                src="placeholder.png"
+                alt="Gold Break Makers box placeholder image"
+                class="media-img"
+                style="aspect-ratio: 3 / 4;"
+              />
+              <div class="media-caption">
+                <strong>Gold Box Image</strong>
+                <p>Swap in your Gold product photo whenever you’re ready.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-item">
+          <span class="footer-label">Email</span>
+          <a class="footer-link" href="mailto:support@breakmakers.com">support@breakmakers.com</a>
+        </div>
+        <div class="footer-item">
+          <span class="footer-label">Hours</span>
+          <span class="footer-text">Mon–Fri · 9:00 AM–5:00 PM (ET)</span>
+        </div>
+        <div class="footer-item">
+          <span class="footer-label">Location</span>
+          <span class="footer-text">[REMOVED]</span>
+        </div>
+        <div class="footer-item footer-right">
+          <span class="footer-text">© <span id="year"></span> Break Makers</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 | Break Makers</title>
+    <meta
+      name="description"
+      content="Page not found. Return to Break Makers home, checklists, or contact support."
+    />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+
+    <!-- Page-specific styles (kept here so you don't have to edit style.css) -->
+    <style>
+      .page {
+        padding: 64px 0 80px;
+      }
+
+      .error-card {
+        padding: 22px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+      }
+
+      .error-code {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--muted);
+        font-weight: 800;
+        font-size: 0.9rem;
+        margin: 0 0 14px;
+      }
+
+      .error-title {
+        margin: 0 0 10px;
+        font-size: clamp(2rem, 3.6vw, 3rem);
+        letter-spacing: -0.8px;
+        line-height: 1.05;
+      }
+
+      .error-subtitle {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        max-width: 70ch;
+      }
+
+      .error-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .quick-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .hint {
+        margin: 14px 0 0;
+        color: var(--muted-2);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .img-wrap {
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.03);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+      }
+
+      .img-wrap img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
+      }
+
+      @media (max-width: 940px) {
+        .error-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Top Navigation -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="Break Makers Home">
+          <span class="brand-mark" aria-hidden="true">BM</span>
+          <span class="brand-text">Break Makers</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+
+        <nav class="nav" id="primary-nav" aria-label="Primary">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="checklists.html">Checklists</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="container">
+        <div class="error-card">
+          <div class="error-grid">
+            <div>
+              <p class="error-code">Error · 404</p>
+              <h1 class="error-title">Page not found.</h1>
+              <p class="error-subtitle">
+                The page you’re looking for doesn’t exist (or it moved). Use the buttons
+                below to get back on track.
+              </p>
+
+              <div class="quick-links">
+                <a class="btn btn-primary" href="index.html">Go Home</a>
+                <a class="btn btn-ghost" href="checklists.html">View Checklists</a>
+                <a class="btn btn-ghost" href="contact.html">Contact Support</a>
+              </div>
+
+              <p class="hint">
+                If you typed the URL manually, double-check the spelling. Otherwise,
+                you can reach us at
+                <a class="footer-link" href="mailto:support@breakmakers.com">support@breakmakers.com</a>.
+              </p>
+            </div>
+
+            <div class="img-wrap" aria-label="404 image">
+              <img src="placeholder.png" alt="Placeholder image" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Bar Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-item">
+          <span class="footer-label">Email</span>
+          <a class="footer-link" href="mailto:support@breakmakers.com">support@breakmakers.com</a>
+        </div>
+
+        <div class="footer-item">
+          <span class="footer-label">Hours</span>
+          <span class="footer-text">Mon–Fri · 9:00 AM–5:00 PM (ET)</span>
+        </div>
+
+        <div class="footer-item">
+          <span class="footer-label">Location</span>
+          <span class="footer-text">[REMOVED]</span>
+        </div>
+
+        <div class="footer-item footer-right">
+          <span class="footer-text">© <span id="year"></span> Break Makers</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
