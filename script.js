@@ -36,4 +36,64 @@
     const href = (a.getAttribute("href") || "").toLowerCase();
     if (href === activePath) a.classList.add("is-active");
   });
+
+  // AJAX contact form enhancement for Netlify Forms.
+  const contactForm = document.querySelector('form[name="contact"]');
+
+  if (contactForm) {
+    const statusEl = contactForm.querySelector(".form-status");
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const submitText = submitBtn ? submitBtn.textContent : "";
+
+    const showStatus = (message, type) => {
+      if (!statusEl) return;
+
+      statusEl.textContent = message;
+      statusEl.classList.remove("is-success", "is-error");
+      statusEl.classList.add(type === "success" ? "is-success" : "is-error");
+      statusEl.hidden = false;
+    };
+
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+      }
+
+      contactForm.setAttribute("aria-busy", "true");
+
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString(),
+        });
+
+        if (!response.ok) throw new Error("Form submission failed.");
+
+        contactForm.reset();
+        showStatus("Thanks, your message was sent. We’ll get back to you by email.", "success");
+      } catch (error) {
+        showStatus(
+          "Sorry, your message couldn’t be sent. Please try again or email us directly.",
+          "error"
+        );
+      } finally {
+        contactForm.removeAttribute("aria-busy");
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitText;
+        }
+      }
+    });
+  }
 })();

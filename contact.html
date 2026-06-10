@@ -123,6 +123,41 @@
         line-height: 1.4;
       }
 
+      .netlify-honeypot {
+        display: none;
+      }
+
+      .form-status {
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+        font-weight: 750;
+        line-height: 1.45;
+      }
+
+      .form-status[hidden] {
+        display: none;
+      }
+
+      .form-status.is-success {
+        border-color: rgba(77, 255, 166, 0.28);
+        background: rgba(77, 255, 166, 0.09);
+        color: var(--text);
+      }
+
+      .form-status.is-error {
+        border-color: rgba(255, 109, 109, 0.35);
+        background: rgba(255, 109, 109, 0.10);
+        color: var(--text);
+      }
+
+      .btn[disabled] {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
       .info-list {
         display: grid;
         gap: 10px;
@@ -210,10 +245,16 @@
             <!-- Netlify Forms:
                  - Keep name="contact" and netlify attributes
                  - Add a hidden "form-name" input
-                 - Optional: add a success page later (action="/thanks.html")
+                 - Use a honeypot field for spam protection
             -->
-            <form name="contact" method="POST" netlify>
+            <form name="contact" method="POST" netlify netlify-honeypot="bot-field">
               <input type="hidden" name="form-name" value="contact" />
+              <p class="netlify-honeypot">
+                <label>
+                  Don’t fill this out if you’re human:
+                  <input name="bot-field" autocomplete="off" tabindex="-1" />
+                </label>
+              </p>
 
               <div class="field">
                 <label for="name">Name</label>
@@ -245,6 +286,8 @@
                 <button class="btn btn-primary" type="submit">Send Message</button>
                 <a class="btn btn-ghost" href="checklists.html">View Checklists</a>
               </div>
+
+              <div class="form-status" role="status" aria-live="polite" aria-atomic="true" hidden></div>
 
               <p class="tiny">
                 Prefer email? You can reach us at
