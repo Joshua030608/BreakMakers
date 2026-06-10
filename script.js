@@ -30,9 +30,10 @@
   // Active nav link highlighting (works for multi-page site)
   const links = Array.from(document.querySelectorAll(".nav-link"));
   const path = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
+  const activePath = path.endsWith("-checklist.html") ? "checklists.html" : path;
 
   links.forEach((a) => {
     const href = (a.getAttribute("href") || "").toLowerCase();
-    if (href === path) a.classList.add("is-active");
+    if (href === activePath) a.classList.add("is-active");
   });
 })();
