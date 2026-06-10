@@ -27,14 +27,22 @@
     });
   }
 
-  // Active nav link highlighting (works for multi-page site)
+  // Active nav link highlighting for local files and Netlify clean URLs.
   const links = Array.from(document.querySelectorAll(".nav-link"));
-  const path = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
-  const activePath = path.endsWith("-checklist.html") ? "checklists.html" : path;
+  const pageKeyFromPath = (value) => {
+    const parts = (value || "").toLowerCase().split(/[?#]/)[0].split("/").filter(Boolean);
+    const lastPart = parts.pop() || "index";
+    const page = lastPart.endsWith(".html") ? lastPart.slice(0, -5) : lastPart;
+
+    if (page === "index") return "index";
+    if (page.endsWith("-checklist")) return "checklists";
+    return page;
+  };
+  const activePage = pageKeyFromPath(window.location.pathname);
 
   links.forEach((a) => {
-    const href = (a.getAttribute("href") || "").toLowerCase();
-    if (href === activePath) a.classList.add("is-active");
+    const hrefPage = pageKeyFromPath(a.getAttribute("href"));
+    if (hrefPage === activePage) a.classList.add("is-active");
   });
 
   // AJAX contact form enhancement for Netlify Forms.
