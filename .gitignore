@@ -1,9 +1,3 @@
 .env
 .env*.local
 .DS_Store
-
-# Local source images replaced by optimized production JPEGs.
-bfp.png
-broken.png
-lineup.png
-logo.PNG
