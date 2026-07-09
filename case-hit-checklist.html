@@ -22,15 +22,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js?v=20260610-2"></script>
-
-    <style>
-      .checklist-note { margin: 0 0 10px; color: var(--muted); line-height: 1.6; max-width: 60ch; }
-      .checklist { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-direction: column; gap: 10px; }
-      .check-item { padding: 12px 14px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text); font-weight: 700; line-height: 1.45; }
-      .check-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
-    </style>
+    <link rel="stylesheet" href="style.css?v=20260709-5" />
+    <script defer src="script.js?v=20260709-4"></script>
   </head>
 
   <body>
@@ -54,7 +47,7 @@
       </div>
     </header>
 
-    <main>
+    <main class="checklist-page">
       <section class="hero">
         <div class="container hero-grid">
           <div class="hero-content">
@@ -62,15 +55,9 @@
             <h1 class="hero-title">Case Hit Checklist</h1>
 
             <p class="checklist-note">
-              Example checklist items (placeholder for now). We’ll replace this with the full,
-              finalized checklist later.
+              Current player and card details for Case Hit products.
+              <br>Contact us for purchasing details and information.
             </p>
-
-            <ul class="checklist">
-              <li class="check-item">Prizm - Jalen Hurts - PSA 10 - 2026</li>
-              <li class="check-item">Optic - Tom Brady - PSA 9 - 2025</li>
-              <li class="check-item">National Treasures - Shedeur Sanders - PSA 8 - 2024</li>
-            </ul>
 
             <div class="check-actions">
               <a class="btn btn-ghost" href="checklists.html">← Back to Checklists</a>
@@ -87,6 +74,26 @@
                 style="aspect-ratio: 3 / 4;"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="live-checklist-section" aria-labelledby="case-hit-players-heading">
+        <div
+          class="container live-checklist"
+          data-checklist-url="https://docs.google.com/spreadsheets/d/e/2PACX-1vRfuAFICFX3Oj8OldiGcMLKmKhf9igRUFKDwKgJVCEpzeu4lxSIxalMBgefsKqhs6Kc3mP4IYxUPelz/pub?gid=58420158&amp;single=true&amp;output=csv"
+          data-checklist-mode="embed"
+        >
+          <div class="live-checklist-head">
+            <div>
+              <p class="eyebrow">Checklist</p>
+              <h2 class="section-title" id="case-hit-players-heading">Case Hit Players - Series 16</h2>
+            </div>
+            <p class="live-checklist-status" data-checklist-status>Loading players...</p>
+          </div>
+
+          <div class="live-checklist-grid" data-checklist-list aria-live="polite">
+            <p class="checklist-message">Loading players...</p>
           </div>
         </div>
       </section>
