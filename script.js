@@ -86,7 +86,6 @@
   const normalizeHeader = (value) =>
     value.replace(/^\uFEFF/, "").trim().toLowerCase().replace(/[^a-z0-9]/g, "");
 
-  // Keeps a polished, current preview available when the pages are opened directly as files.
   const checklistSnapshots = {
     "26350997": [
       ["2025 Topps Chrome Green Auto", "Football", "Jahmyr Gibbs"],

@@ -45,12 +45,11 @@ body {
   min-height: 100vh;
   font-family: var(--font);
   color: var(--text);
-  background: transparent;   /* IMPORTANT */
-  position: relative;        /* for stacking context */
+  background: transparent;
+  position: relative;
   isolation: isolate;
 }
 
-/* Full-page gradient layer (never ends, never tiles weirdly) */
 body::before {
   content: "";
   position: fixed;
